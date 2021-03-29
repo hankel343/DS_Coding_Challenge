@@ -20,17 +20,20 @@ int main()
 	start = chrono::system_clock::now();
 	for (int i = 1; i <= 1000000; i++)
 	{
+		//Assume number is prime to begin with.
 		bIsPrime = true;
 		for (int j = 2; j < i && bIsPrime; j++)
 		{
-			if (i % j == 0)
+			if (i % j == 0) //Demonstrated to not be a prime number.
 				bIsPrime = false;
 		}
 
-		if (bIsPrime)
+		if (bIsPrime) //If control makes it through the inner loop without having set bIsPrime to false, i is a prime number.
 			nPrimes.push_back(i);
-
 	}
+
+	//Calculation is slowed down by prime numbers that have to have each number up to itself tested.
+	//Composite numbers take less time to find because as soon as a mod of 0 is found it is known that i is not a prime number.
 
 	end = chrono::system_clock::now();
 	elapsed = end - start;
