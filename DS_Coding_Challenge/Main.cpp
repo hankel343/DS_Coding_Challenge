@@ -40,7 +40,7 @@ int main()
 	elapsed = end - start;
 
 	cout << "Calculation runtime: " << elapsed.count() << endl;
-	cout << nPrimes.size() << " primes were found.\n";
+	cout << nPrimes.size() - 1 << " primes were found.\n";
 
 	for (int i = 0; i < nPrimes.size(); i++)
 	{
