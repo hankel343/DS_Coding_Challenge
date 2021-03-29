@@ -1,14 +1,18 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 
 using namespace std;
 
 int main()
 {
+	ofstream outFile;
+	outFile.open("Primes.txt");
+
 	vector<int> nPrimes;
 	bool bIsPrime = true;
 
-	for (int i = 1; i <= 100; i++)
+	for (int i = 1; i <= 10000; i++)
 	{
 		bIsPrime = true;
 		for (int j = 2; j < i && bIsPrime; j++)
@@ -22,13 +26,13 @@ int main()
 
 	}
 
-	cout << "Primes between 1 and 100: \n";
+
 	for (int i = 0; i < nPrimes.size(); i++)
 	{
 		if (i != 0 && i % 10 == 0)
-			cout << nPrimes[i] << endl;
+			outFile << nPrimes[i] << endl;
 		else
-			cout << nPrimes[i] << " ";
+			outFile << nPrimes[i] << " ";
 	}
 
 
