@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <chrono>
 
 using namespace std;
 
@@ -9,10 +10,15 @@ int main()
 	ofstream outFile;
 	outFile.open("Primes.txt");
 
+	chrono::time_point<chrono::system_clock> start;
+	chrono::time_point<chrono::system_clock> end;
+	chrono::duration<float> elapsed;
+
 	vector<int> nPrimes;
 	bool bIsPrime = true;
 
-	for (int i = 1; i <= 10000; i++)
+	start = chrono::system_clock::now();
+	for (int i = 1; i <= 1000000; i++)
 	{
 		bIsPrime = true;
 		for (int j = 2; j < i && bIsPrime; j++)
@@ -26,6 +32,10 @@ int main()
 
 	}
 
+	end = chrono::system_clock::now();
+	elapsed = end - start;
+
+	cout << "Calculation runtime: " << elapsed.count() << endl;
 
 	for (int i = 0; i < nPrimes.size(); i++)
 	{
